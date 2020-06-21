@@ -18,6 +18,7 @@
   "homepage": "https://github.com/temacxz/frontend-project-lvl1#readme",
   "type": "module",
   "bin": {
+    "brain-even": "bin/brain-even.js",
     "brain-games": "bin/brain-games.js"
   },
   "dependencies": {
