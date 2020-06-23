@@ -1,4 +1,4 @@
-import runGame from './index.js';
+import runGame from '../index.js';
 
 const ANSWER_YES = 'yes';
 const ANSWER_NO = 'no';

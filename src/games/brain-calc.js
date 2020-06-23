@@ -1,4 +1,4 @@
-import runGame from './index.js';
+import runGame from '../index.js';
 
 const runBrainCalcGame = () => {
   runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
