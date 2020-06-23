@@ -4,8 +4,11 @@ const ANSWER_YES = 'yes';
 const ANSWER_NO = 'no';
 
 const runBrainEvenGame = () => {
-  runGame(generateQuestion, checkAnswer, getCorrectAnswer);
+  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
 };
+
+const getNoticeText = () =>
+  'Answer "yes" if the number is even, otherwise answer "no".';
 
 const getBooleanAnswer = (answer) => answer === ANSWER_YES;
 

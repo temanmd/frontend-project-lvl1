@@ -1,6 +1,11 @@
 import readlineSync from 'readline-sync';
 
-const runGame = (generateQuestion, checkAnswer, getCorrectAnswer) => {
+const runGame = (
+  getNoticeText,
+  generateQuestion,
+  checkAnswer,
+  getCorrectAnswer,
+) => {
   const state = {
     correctAnswers: 0,
     isError: false,
@@ -9,6 +14,7 @@ const runGame = (generateQuestion, checkAnswer, getCorrectAnswer) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
+  console.log(getNoticeText());
 
   do {
     const question = generateQuestion();

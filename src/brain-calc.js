@@ -1,8 +1,10 @@
 import runGame from './index.js';
 
 const runBrainCalcGame = () => {
-  runGame(generateQuestion, checkAnswer, getCorrectAnswer);
+  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
 };
+
+const getNoticeText = () => 'What is the result of the expression?';
 
 const checkAnswer = (answer, question) => {
   const integerAnswer = parseInt(answer, 10);
