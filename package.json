@@ -12,6 +12,10 @@
   },
   "author": "Artem Belankov",
   "license": "ISC",
+  "keywords": [
+    "hexlet-project", "games", "calc", "even", "gcd", "prime", "progression",
+    "brain-games"
+  ],
   "bugs": {
     "url": "https://github.com/temacxz/frontend-project-lvl1/issues"
   },
