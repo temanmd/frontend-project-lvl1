@@ -1,4 +1,5 @@
 import runGame from '../index.js';
+import { getRandomInteger } from '../utils.js';
 
 const noticeText = 'What is the result of the expression?';
 
@@ -17,12 +18,12 @@ const getCorrectAnswer = (action, number1, number2) => {
 
 const generateQuestionData = () => {
   const actions = ['+', '-', '*'];
-  const actionIndex = Math.floor(Math.random() * 3);
+  const actionIndex = getRandomInteger(3);
   const action = actions[actionIndex];
 
   const maxNumber = 1000;
-  const number1 = Math.floor(Math.random() * Math.floor(maxNumber));
-  const number2 = Math.floor(Math.random() * Math.floor(maxNumber));
+  const number1 = getRandomInteger(maxNumber);
+  const number2 = getRandomInteger(maxNumber);
 
   const correctAnswer = getCorrectAnswer(action, number1, number2);
 

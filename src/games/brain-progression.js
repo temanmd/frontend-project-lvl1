@@ -1,11 +1,12 @@
 import runGame from '../index.js';
+import { getRandomInteger } from '../utils.js';
 
 const noticeText = 'What number is missing in the progression?';
 
 const generateQuestionData = () => {
-  const stepNumber = Math.floor(Math.random() * 10) + 1;
-  const replaceIndex = Math.floor(Math.random() * 10);
-  const startNumber = Math.floor(Math.random() * Math.floor(100));
+  const stepNumber = getRandomInteger(10) + 1;
+  const replaceIndex = getRandomInteger(10);
+  const startNumber = getRandomInteger(100);
   let counter = startNumber;
   const numbers = [startNumber];
 
