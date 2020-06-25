@@ -15,7 +15,7 @@ const needToAskAnotherQuestion = (state) => (
 );
 
 const runGame = (
-  getNoticeText,
+  noticeText,
   generateQuestion,
   checkAnswer,
   getCorrectAnswer,
@@ -28,7 +28,7 @@ const runGame = (
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
-  console.log(getNoticeText());
+  console.log(noticeText);
 
   do {
     const question = generateQuestion();

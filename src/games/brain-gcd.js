@@ -1,8 +1,6 @@
 import runGame from '../index.js';
 
-const getNoticeText = () => (
-  'Find the greatest common divisor of given numbers.'
-);
+const noticeText = 'Find the greatest common divisor of given numbers.';
 
 const calcGCD = (number1, number2) => {
   if (!number2) {
@@ -35,7 +33,7 @@ const generateQuestion = () => {
 };
 
 const runBrainGCDGame = () => {
-  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
+  runGame(noticeText, generateQuestion, checkAnswer, getCorrectAnswer);
 };
 
 export default runBrainGCDGame;

@@ -1,6 +1,6 @@
 import runGame from '../index.js';
 
-const getNoticeText = () => 'What is the result of the expression?';
+const noticeText = 'What is the result of the expression?';
 
 const checkAnswer = (answer, question) => {
   const integerAnswer = parseInt(answer, 10);
@@ -47,7 +47,7 @@ const generateQuestion = () => {
 };
 
 const runBrainCalcGame = () => {
-  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
+  runGame(noticeText, generateQuestion, checkAnswer, getCorrectAnswer);
 };
 
 export default runBrainCalcGame;
