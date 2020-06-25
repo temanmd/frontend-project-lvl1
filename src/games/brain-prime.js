@@ -1,5 +1,4 @@
 import runGame from '../index.js';
-import { ANSWER_YES, ANSWER_NO, getBooleanAnswer } from '../booleanAnswers.js';
 
 const noticeText = 'Answer "yes" if given number is prime. '
                    + 'Otherwise answer "no".';
@@ -11,29 +10,18 @@ const isPrime = (number) => {
   return number > 1;
 };
 
-const checkAnswer = (answer, question) => {
-  if (![ANSWER_YES, ANSWER_NO].includes(answer)) {
-    return false;
-  }
-
-  return isPrime(question.number) === getBooleanAnswer(answer);
-};
-
-const getCorrectAnswer = (question) => (
-  isPrime(question.number) ? ANSWER_YES : ANSWER_NO
-);
-
-const generateQuestion = () => {
+const generateQuestionData = () => {
   const number = Math.floor(Math.random() * 100);
+  const correctAnswer = isPrime(number) ? 'yes' : 'no';
 
   return {
-    number,
-    text: number,
+    question: number,
+    correctAnswer,
   };
 };
 
 const runBrainPrimeGame = () => {
-  runGame(noticeText, generateQuestion, checkAnswer, getCorrectAnswer);
+  runGame(noticeText, generateQuestionData);
 };
 
 export default runBrainPrimeGame;

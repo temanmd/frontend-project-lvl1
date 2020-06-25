@@ -1,52 +1,39 @@
 import readlineSync from 'readline-sync';
 
-const showErrorText = (answer, question, name, getCorrectAnswer) => {
-  let result = `"${answer}" is wrong answer ;(. `;
-  result += `Correct answer was "${getCorrectAnswer(question)}".\n`;
-  result += `Let's try again, ${name}!`;
+const showErrorText = (answer, name, correctAnswer) => {
+  const result = `"${answer}" is wrong answer ;(. `
+                 + `Correct answer was "${correctAnswer}".\n`
+                 + `Let's try again, ${name}!`;
 
   console.log(result);
 };
 
 const getAnswer = () => readlineSync.question('Your answer: ');
 
-const needToAskAnotherQuestion = (state) => (
-  state.correctAnswers < 3 && !state.isError
-);
-
 const runGame = (
   noticeText,
-  generateQuestion,
-  checkAnswer,
-  getCorrectAnswer,
+  generateQuestionData,
 ) => {
-  const state = {
-    correctAnswers: 0,
-    isError: false,
-  };
-
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   console.log(noticeText);
 
-  do {
-    const question = generateQuestion();
-    console.log(`Question: ${question.text}`);
+  for (let i = 0; i < 3; i += 1) {
+    const data = generateQuestionData();
+    console.log(`Question: ${data.question}`);
     const answer = getAnswer();
-    const isCorrectAnswer = checkAnswer(answer, question);
+    const { correctAnswer } = data;
+    const isCorrectAnswer = answer === correctAnswer;
     if (isCorrectAnswer) {
-      state.correctAnswers += 1;
       console.log('Correct!');
     } else {
-      state.isError = true;
-      showErrorText(answer, question, name, getCorrectAnswer);
+      showErrorText(answer, name, correctAnswer);
+      return;
     }
-  } while (needToAskAnotherQuestion(state));
-
-  if (!state.isError) {
-    console.log(`Congratulations, ${name}!`);
   }
+
+  console.log(`Congratulations, ${name}!`);
 };
 
 export default runGame;

@@ -10,30 +10,20 @@ const calcGCD = (number1, number2) => {
   return calcGCD(number2, number1 % number2);
 };
 
-const checkAnswer = (answer, question) => {
-  const integerAnswer = parseInt(answer, 10);
-  const numbersGCD = calcGCD(question.number1, question.number2);
-  return numbersGCD === integerAnswer;
-};
-
-const getCorrectAnswer = (question) => (
-  calcGCD(question.number1, question.number2)
-);
-
-const generateQuestion = () => {
+const generateQuestionData = () => {
   const maxNumber = 100;
   const number1 = Math.floor(Math.random() * Math.floor(maxNumber));
   const number2 = Math.floor(Math.random() * Math.floor(maxNumber));
+  const correctAnswer = calcGCD(number1, number2);
 
   return {
-    number1,
-    number2,
-    text: `${number1} ${number2}`,
+    question: `${number1} ${number2}`,
+    correctAnswer: correctAnswer.toString(),
   };
 };
 
 const runBrainGCDGame = () => {
-  runGame(noticeText, generateQuestion, checkAnswer, getCorrectAnswer);
+  runGame(noticeText, generateQuestionData);
 };
 
 export default runBrainGCDGame;
