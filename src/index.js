@@ -1,5 +1,19 @@
 import readlineSync from 'readline-sync';
 
+const showErrorText = (answer, question, name, getCorrectAnswer) => {
+  let result = `"${answer}" is wrong answer ;(. `;
+  result += `Correct answer was "${getCorrectAnswer(question)}".\n`;
+  result += `Let's try again, ${name}!`;
+
+  console.log(result);
+};
+
+const getAnswer = () => readlineSync.question('Your answer: ');
+
+const needToAskAnotherQuestion = (state) => (
+  state.correctAnswers < 3 && !state.isError
+);
+
 const runGame = (
   getNoticeText,
   generateQuestion,
@@ -34,18 +48,5 @@ const runGame = (
     console.log(`Congratulations, ${name}!`);
   }
 };
-
-const showErrorText = (answer, question, name, getCorrectAnswer) => {
-  let result = `"${answer}" is wrong answer ;(. `;
-  result += `Correct answer was "${getCorrectAnswer(question)}".\n`;
-  result += `Let's try again, ${name}!`;
-
-  console.log(result);
-};
-
-const getAnswer = () => readlineSync.question('Your answer: ');
-
-const needToAskAnotherQuestion = (state) =>
-  state.correctAnswers < 3 && !state.isError;
 
 export default runGame;

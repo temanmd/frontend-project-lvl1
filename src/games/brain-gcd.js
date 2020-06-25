@@ -1,11 +1,8 @@
 import runGame from '../index.js';
 
-const runBrainGCDGame = () => {
-  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
-};
-
-const getNoticeText = () =>
-  'Find the greatest common divisor of given numbers.';
+const getNoticeText = () => (
+  'Find the greatest common divisor of given numbers.'
+);
 
 const calcGCD = (number1, number2) => {
   if (!number2) {
@@ -21,8 +18,9 @@ const checkAnswer = (answer, question) => {
   return numbersGCD === integerAnswer;
 };
 
-const getCorrectAnswer = (question) =>
-  calcGCD(question.number1, question.number2);
+const getCorrectAnswer = (question) => (
+  calcGCD(question.number1, question.number2)
+);
 
 const generateQuestion = () => {
   const maxNumber = 100;
@@ -34,6 +32,10 @@ const generateQuestion = () => {
     number2,
     text: `${number1} ${number2}`,
   };
+};
+
+const runBrainGCDGame = () => {
+  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
 };
 
 export default runBrainGCDGame;

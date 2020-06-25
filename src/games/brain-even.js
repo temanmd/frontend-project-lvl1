@@ -1,12 +1,9 @@
 import runGame from '../index.js';
 import { ANSWER_YES, ANSWER_NO, getBooleanAnswer } from '../booleanAnswers.js';
 
-const runBrainEvenGame = () => {
-  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
-};
-
-const getNoticeText = () =>
-  'Answer "yes" if the number is even, otherwise answer "no".';
+const getNoticeText = () => (
+  'Answer "yes" if the number is even, otherwise answer "no".'
+);
 
 const isEven = (number) => number % 2 === 0;
 
@@ -18,8 +15,9 @@ const checkAnswer = (answer, question) => {
   return isEven(question.number) === getBooleanAnswer(answer);
 };
 
-const getCorrectAnswer = (question) =>
-  (isEven(question.number) ? ANSWER_YES : ANSWER_NO);
+const getCorrectAnswer = (question) => (
+  isEven(question.number) ? ANSWER_YES : ANSWER_NO
+);
 
 const generateQuestion = () => {
   const maxNumber = 1000;
@@ -29,6 +27,10 @@ const generateQuestion = () => {
     number,
     text: number,
   };
+};
+
+const runBrainEvenGame = () => {
+  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
 };
 
 export default runBrainEvenGame;

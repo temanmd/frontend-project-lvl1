@@ -1,9 +1,5 @@
 import runGame from '../index.js';
 
-const runBrainCalcGame = () => {
-  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
-};
-
 const getNoticeText = () => 'What is the result of the expression?';
 
 const checkAnswer = (answer, question) => {
@@ -48,6 +44,10 @@ const generateQuestion = () => {
     action,
     text: `${number1} ${action} ${number2}`,
   };
+};
+
+const runBrainCalcGame = () => {
+  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
 };
 
 export default runBrainCalcGame;

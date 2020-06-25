@@ -1,9 +1,5 @@
 import runGame from '../index.js';
 
-const runBrainProgressionGame = () => {
-  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
-};
-
 const getNoticeText = () => 'What number is missing in the progression?';
 
 const checkAnswer = (answer, question) => {
@@ -35,6 +31,10 @@ const generateQuestion = () => {
     numbers,
     text,
   };
+};
+
+const runBrainProgressionGame = () => {
+  runGame(getNoticeText, generateQuestion, checkAnswer, getCorrectAnswer);
 };
 
 export default runBrainProgressionGame;
