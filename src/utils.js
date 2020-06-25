@@ -1,3 +1,5 @@
-export const getRandomInteger = (maxNumber) => {
-  return Math.floor(Math.random() * maxNumber);
-};
+const getRandomInteger = (maxNumber) => (
+  Math.floor(Math.random() * maxNumber)
+);
+
+export default getRandomInteger;
