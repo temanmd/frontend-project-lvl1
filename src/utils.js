@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 
-export const getRandomInteger = (maxNumber) => (
-  Math.floor(Math.random() * maxNumber)
+export const getRandomInteger = (min, max) => (
+  Math.floor(Math.random() * (max - min + 1)) + min
 );

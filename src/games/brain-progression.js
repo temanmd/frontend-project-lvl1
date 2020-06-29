@@ -1,33 +1,39 @@
 import runGame from '../index.js';
 import { getRandomInteger } from '../utils.js';
 
-const noticeText = 'What number is missing in the progression?';
+const gameDescription = 'What number is missing in the progression?';
+const progressionLength = 10;
+const maxStep = 10;
 
-const generateQuestionData = () => {
-  const stepNumber = getRandomInteger(10) + 1;
-  const replaceIndex = getRandomInteger(10);
-  const startNumber = getRandomInteger(100);
-  let counter = startNumber;
-  const numbers = [startNumber];
+const generateProgression = (start, step, length) => {
+  let currentItem = start;
+  const result = [start];
 
-  for (let i = 0; i < 9; i += 1) {
-    counter += stepNumber;
-    numbers.push(counter);
+  for (let i = 0; i < length - 1; i += 1) {
+    currentItem += step;
+    result.push(currentItem);
   }
 
-  const textNumbers = [...numbers];
-  textNumbers[replaceIndex] = '..';
-  const text = textNumbers.join(' ');
-  const correctAnswer = numbers[replaceIndex];
+  return result;
+};
+
+const generateQuestionData = () => {
+  const step = getRandomInteger(1, maxStep);
+  const replaceIndex = getRandomInteger(0, progressionLength - 1);
+  const start = getRandomInteger(1, 100);
+  const progression = generateProgression(start, step, progressionLength);
+  const correctAnswer = progression[replaceIndex];
+
+  progression[replaceIndex] = '..';
 
   return {
-    question: text,
+    question: progression.join(' '),
     correctAnswer: correctAnswer.toString(),
   };
 };
 
 const runBrainProgressionGame = () => {
-  runGame(noticeText, generateQuestionData);
+  runGame(gameDescription, generateQuestionData);
 };
 
 export default runBrainProgressionGame;

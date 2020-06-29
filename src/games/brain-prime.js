@@ -1,28 +1,29 @@
 import runGame from '../index.js';
 import { getRandomInteger } from '../utils.js';
 
-const noticeText = 'Answer "yes" if given number is prime. '
-                   + 'Otherwise answer "no".';
+const gameDescription = 'Answer "yes" if given number is prime. '
+                        + 'Otherwise answer "no".';
+const maxNumber = 100;
 
 const isPrime = (number) => {
-  for (let i = 2, s = Math.sqrt(number); i <= s; i += 1) {
-    if (number % i === 0) return false;
+  for (let divider = 2; divider <= Math.sqrt(number); divider += 1) {
+    if (number % divider === 0) return false;
   }
   return number > 1;
 };
 
 const generateQuestionData = () => {
-  const number = getRandomInteger(100);
+  const number = getRandomInteger(1, maxNumber);
   const correctAnswer = isPrime(number) ? 'yes' : 'no';
 
   return {
-    question: number,
+    question: String(number),
     correctAnswer,
   };
 };
 
 const runBrainPrimeGame = () => {
-  runGame(noticeText, generateQuestionData);
+  runGame(gameDescription, generateQuestionData);
 };
 
 export default runBrainPrimeGame;
